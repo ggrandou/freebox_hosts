@@ -1,0 +1,6 @@
+*.egg-info/
+*.py[cod]
+.venv/
+__pycache__/
+dist/
+hosts.*

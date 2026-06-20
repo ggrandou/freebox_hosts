@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "freebox-hosts"
+version = "0.1.0"
+description = "Daemon maintaining a dnsmasq hosts(5) file from Freebox LAN data"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE.txt"]
+requires-python = ">=3.11"
+dependencies = [
+    "freebox @ https://github.com/ggrandou/python-freebox/archive/refs/heads/main.zip",
+    "text-unidecode>=1.3",
+    "websockets>=12",
+]
+
+[project.optional-dependencies]
+dev = []
+
+[project.scripts]
+freebox-hosts = "freebox_hosts.__main__:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/freebox_hosts"]
