@@ -362,6 +362,9 @@ def main() -> None:
         format='%(asctime)s %(levelname)s %(name)s %(message)s',
         handlers=[handler],
     )
+    if not args.verbose:
+        logging.getLogger("httpx").setLevel(logging.WARNING)
+        logging.getLogger("httpcore").setLevel(logging.WARNING)
 
     FreeboxHostsDaemon(args.hosts_file, args.poll_interval, args.inactive_threshold).run(once=args.once)
 
